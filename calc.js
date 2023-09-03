@@ -1,9 +1,8 @@
-let equal_pressed = 0;
-let button_input = document.querySelectorAll(".input-button");
 let input = document.getElementById("input");
 let equal = document.getElementById("equal");
 let clear = document.getElementById("clear");
 let erase = document.getElementById("erase");
+let currentInput = ""; // Store the current input
 function convertToArabicNumerals(nepaliNumber) {
   const nepaliNumerals = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
   let arabicNumber = "";
@@ -17,7 +16,6 @@ function convertToArabicNumerals(nepaliNumber) {
   return arabicNumber;
 }
 
-// Function to convert Arabic numerals to Nepali numerals
 function convertToNepaliNumerals(arabicNumber) {
   const nepaliNumerals = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
   let nepaliNumber = "";
@@ -31,80 +29,47 @@ function convertToNepaliNumerals(arabicNumber) {
   return nepaliNumber;
 }
 
-window.onload = () => {
-  input.value = "";
-};
+function performOperation(inputValue) {
+  let arabicInput = convertToArabicNumerals(inputValue);
 
-button_input.forEach((button_class) => {
-  button_class.addEventListener("click", () => {
-    if (equal_pressed == 1) {
-      input.value = "";
-      equal_pressed = 0;
-    }
-    input.value += button_class.value;
+  try {
+    let result = eval(arabicInput);
+    return result;
+  } catch (err) {
+    return "Error";
+  }
+}
+
+document.querySelectorAll(".input-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    currentInput += button.value;
+    input.value = convertToNepaliNumerals(currentInput);
   });
 });
 
 equal.addEventListener("click", () => {
-  equal_pressed = 1;
-  let inp_val = input.value;
-  let arabicInput = convertToArabicNumerals(inp_val);
+  let result = performOperation(currentInput);
 
-  try {
-    let solution = eval(arabicInput);
-    let nepaliResult = convertToNepaliNumerals(solution.toString());
-
-    input.value = nepaliResult;
-  } catch (err) {
+  if (result === "Error") {
     input.value = "Error";
     setTimeout(() => {
       input.value = "";
     }, 1000);
+  } else {
+    input.value = convertToNepaliNumerals(result.toString());
+    currentInput = result.toString();
   }
 });
 
 clear.addEventListener("click", () => {
   input.value = "";
+  currentInput = "";
 });
 
 erase.addEventListener("click", () => {
-  input.value = input.value.substr(0, input.value.length - 1);
-  function performOperation(inputValue) {
-  try {
-    let result = eval(inputValue);
-    return result;
-  } catch (err) {
-    return "त्रुटि";
-  }
-}
-
-button_input.forEach((button_class) => {
-  button_class.addEventListener("click", () => {
-    if (equal_pressed == 1) {
-      input.value = "";
-      equal_pressed = 0;
-    }
-    input.value += button_class.value;
-  });
+  currentInput = currentInput.substr(0, currentInput.length - 1);
+  input.value = convertToNepaliNumerals(currentInput);
 });
 
-equal.addEventListener("click", () => {
-  equal_pressed = 1;
-  let inp_val = input.value;
 
-  let arabicInput = convertToArabicNumerals(inp_val);
-  let result = performOperation(arabicInput);
-  let nepaliResult = convertToNepaliNumerals(result.toString());
-
-  input.value = nepaliResult;
-});
-
-clear.addEventListener("click", () => {
-  input.value = "";
-});
-
-erase.addEventListener("click", () => {
-  input.value = input.value.substr(0, input.value.length - 1);
-});
-});
 
