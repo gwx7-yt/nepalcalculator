@@ -12,7 +12,8 @@ body {
 }
 
 .calculator {
-  width: 400px;
+  width: 90%; /* Adjust the width to your preference */
+  max-width: 400px; /* Limit the maximum width for larger screens */
   background-color: #15173c;
   padding: 50px 30px;
   position: absolute;
@@ -37,6 +38,10 @@ body {
   font-size: 35px;
   ::placeholder 
     color: #ffffff;
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
   }
 }
 
@@ -72,11 +77,11 @@ input[type="button"][value="0"] {
 
 .contact-me {
   position: fixed;
-  bottom: 10px; 
-  right: 10px; 
-  font-size: 0.6em; 
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.6em;
   color: #fff;
-  text-align: right; 
+  text-align: right;
   font-weight: 700;
 }
 
@@ -84,15 +89,13 @@ input[type="button"][value="0"] {
   color: #fff;
   text-decoration: none;
   background-color: #f38500;
-  font:serif;
   font-weight: 300;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .contact-me a:hover {
-  color: #f5a623;
-  background-color: #f38500;
-  font:serif;
-  font-weight: 300;
-
-
+  background-color: #f5a623;
 }
