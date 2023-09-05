@@ -69,3 +69,27 @@ input[type="button"]#equal {
 input[type="button"][value="0"] {
   grid-column: span 2;
 }
+
+.contact-me {
+  position: fixed;
+  bottom: 10px; 
+  right: 10px; 
+  font-size: 0.6em; 
+  color: #fff;
+  text-align: right; 
+}
+
+.contact-me a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #f38500;
+  font:serif;
+}
+
+.contact-me a:hover {
+  color: #f5a623;
+  background-color: #f38500;
+  font:serif;
+
+
+}
