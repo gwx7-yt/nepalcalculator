@@ -16,8 +16,6 @@ function convertToArabicNumerals(nepaliNumber) {
   }
   return arabicNumber;
 }
-
-
 function convertToNepaliNumerals(arabicNumber) {
   const nepaliNumerals = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
   let nepaliNumber = "";
@@ -30,8 +28,6 @@ function convertToNepaliNumerals(arabicNumber) {
   }
   return nepaliNumber;
 }
-
-// Function to perform arithmetic operations
 function performOperation(inputValue) {
   let arabicInput = convertToArabicNumerals(inputValue);
 
@@ -50,14 +46,27 @@ document.querySelectorAll(".input-button").forEach((button) => {
   });
 });
 
-button_input.forEach((button_class) => {
-  button_class.addEventListener("click", () => {
-    if (equal_pressed == 1) {
+
+equal.addEventListener("click", () => {
+  let result = performOperation(currentInput);
+
+  if (result === "Error") {
+    input.value = "Error";
+    setTimeout(() => {
       input.value = "";
-      equal_pressed = 0;
-    }
-    // Remove leading zeros from the input value
-    const inputValue = input.value.replace(/^0+/, '');
-    input.value = inputValue + button_class.value;
-  });
+    }, 1000);
+  } else {
+    input.value = convertToNepaliNumerals(result.toString());
+    currentInput = result.toString();
+  }
+});
+
+clear.addEventListener("click", () => {
+  input.value = "";
+  currentInput = "";
+});
+
+erase.addEventListener("click", () => {
+  currentInput = currentInput.substr(0, currentInput.length - 1);
+  input.value = convertToNepaliNumerals(currentInput);
 });
