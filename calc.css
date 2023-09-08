@@ -12,8 +12,8 @@ body {
 }
 
 .calculator {
-  width: 90%; /* Adjust the width to your preference */
-  max-width: 400px; /* Limit the maximum width for larger screens */
+  width: 90%; 
+  max-width: 400px; 
   background-color: #15173c;
   padding: 50px 30px;
   position: absolute;
@@ -98,4 +98,33 @@ input[type="button"][value="0"] {
 
 .contact-me a:hover {
   background-color: #f5a623;
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .calculator {
+    width: 100%;
+    max-width: 300px;
+    padding: 30px;
+  }
+
+  .buttons {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  .buttons input[type="button"] {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .display input {
+    font-size: 24px; 
+  }
+
+  .contact-me {
+    font-size: 0.5em;
+  }
 }
