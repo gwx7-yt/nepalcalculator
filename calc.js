@@ -1,3 +1,15 @@
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", toggleTheme);
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle("dark-mode");
+  const isDarkMode = body.classList.contains("dark-mode");
+  localStorage.setItem("dark-mode", isDarkMode);
+}
+if (localStorage.getItem("dark-mode") === "true") {
+  document.body.classList.add("dark-mode");
+}
+
 let input = document.getElementById("input");
 let equal = document.getElementById("equal");
 let clear = document.getElementById("clear");
@@ -69,4 +81,4 @@ clear.addEventListener("click", () => {
 erase.addEventListener("click", () => {
   currentInput = currentInput.substr(0, currentInput.length - 1);
   input.value = convertToNepaliNumerals(currentInput);
-});
+  });
