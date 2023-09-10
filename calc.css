@@ -156,11 +156,11 @@ input[type="button"][value="0"] {
   border: none;
   background: transparent; 
   font-size: inherit;
-  color: inherit;
+  color: #fff;
   outline: none;
 }
 
 #result {
   font-size: inherit;
-  color: inherit;
+  color: #fff;
 }
