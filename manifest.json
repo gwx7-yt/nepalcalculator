@@ -1,0 +1,16 @@
+{
+  "name": "Nepali Calculator",
+  "short_name": "Calculator",
+  "description": "A calculator app with Nepali numerals",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff8c00",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
